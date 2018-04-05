@@ -1,3 +1,8 @@
+
+#temporarily ignoring
+assets/
+
+
 .DS_Store
 node_modules/
 /dist/
