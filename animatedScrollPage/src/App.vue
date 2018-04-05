@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <!-- <img src="./assets/logo.png"> -->
+    <Product/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Product from './components/Product'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Product
   }
 }
 </script>
@@ -23,6 +23,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+
+  background-color: #0C161A;
+}
+
+body {
+  margin: 0;
+}
+
+a:-webkit-any-link {
+    /* color: -webkit-link; */
+    text-decoration: none;
+    /* cursor: auto; */
+    color: #0C161A; 
 }
 </style>
