@@ -22,8 +22,10 @@
                 </div>
             </div>
 
-            <div class="subnav-image">
 
+
+            <div class="subnav-image">
+                <!-- <vue-ani-background></vue-ani-background> -->
             </div>
 
         </section>
@@ -32,27 +34,31 @@
 
             <div class="content pad-vert-medium  grid-wrap-4">
                 
-                <div class="item">
+                <div class="item invisible"
+                     v-observe-visibility="(isVisible, entry) => fadeUp(isVisible, entry, 100)">
                     <img src="../assets/handsSprout.jpg" alt="">
                     <div>
                         <p>Eco Friendly Solutions. Don't you worry about harming those pesky trees!</p>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item invisible"
+                    v-observe-visibility="(isVisible, entry) => fadeUp(isVisible, entry, 200)">
                     <img src="../assets/lightbulb2.jpg" alt="">
                     <div>
                         <p>Great Ideas All DAY, As easy as flicking a switch!</p>
 
                     </div>
                 </div>
-                <div class="item">
+                <div class="item invisible"
+                    v-observe-visibility="(isVisible, entry) => fadeUp(isVisible, entry, 300)">
                     <!-- <img src="../assets/shutterstock-shippingBoxOpen.jpg" alt=""> -->
                     <img src="../assets/logo.png" alt="">
                     <div>
                         <p>Vue JS FTW! <br>Fast easy development with a Javascript framework.</p>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item invisible"
+                    v-observe-visibility="(isVisible, entry) => fadeUp(isVisible, entry, 400)">
                     <img src="../assets/thumbsupFlipped.jpg" alt="">
                     <div>
                         <p>This thumb says 'UP'!</p>
@@ -71,37 +77,95 @@
                 </div>
 
                 <div>
-                    <div class="feature-list">
-                        <h4>Let me tell you why you need a green thumb!</h4>
-                        <p>Your yard is a septic field you say? No problem! Put those nutrients to good use! With a green thumb, you can grow the best tasting food you've ever eaten no matter where you grow, I guarantee it! </p>
-                        <h5>Free yourself</h5>
-                        <p>Grow all the food you could ever dream of! Free yourself from that grocery bondage, become self-sufficient and grow your own food!</p>
-                        <h5>Get 'em while they're hot off the press!</h5>
-                        <p>Time's running out, if you don't hurry up and grab one now, you may miss your chance to take advantage of this golden opportunity forever!</p>
+                    <div class="feature-list align-left">
+                        <h4 class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 100)">Best Nothing Ever</h4>
+                        <p class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 300)">There's a whole lotta nothin' to be had here, no product is quite like this one, you won't believe your eyes, and no, it is not a scam! </p>
+                        <h5 class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 100)">Free yourself</h5>
+                        <p class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 300)">Free yourself from the chains of material bondage, give us your money for nothing, become enlightened!</p>
+                        <h5 class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 100)">Get 'em while they're hot off the press!</h5>
+                        <p class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 300)">Time's running out, if you don't hurry up and take this offer now, you may miss your chance forever! <span class="alert-text">Time left: {{ timeLeft }}</span></p>
                     </div>
                 </div>
 
-                <div class="feature-thumb"></div>
+                <div v-scroll-reveal.noreset="{rotate: {z: -100}, delay: 300, reset: false}" class="feature-thumb"></div>
             </div>
 
 
         </section>
 
         <section class="feature1">
-            <div class="content pad-vert-medium">
 
+            <transition @enter="fadeInRight">
+            <div class="content pad-vert-medium ">
+                <div class="flex-panel reverse-flex">
+                    <div class="left-panel"></div>
+                    <div class="right-panel align-right">
+                        <h1 class="invisible" v-observe-visibility="fadeUp">This Product's Primary Feature</h1>
+                        <p class="invisible" v-observe-visibility="fadeUp">There is so much to say about this product, but I'm not sure what to say about it; so I will avoid using contractions or shorter word choice in an effort to take up more space with a long-winded, circumlocutory, run-on sentence—because I want it to take up more room than what I'm able to come up with at the moment.</p>
+                        <h2 class="invisible" v-observe-visibility="fadeUp">More about this feature</h2>
+                        <p class="invisible" v-observe-visibility="fadeUp">More things about this great feature that can make your life easier. No joke, no lie, this feature will do your job for you, just buy it already!</p>
+                        <h3 class="invisible" v-observe-visibility="fadeUp">hmmmmmmm</h3>
+                        <p class="invisible" v-observe-visibility="fadeUp">Err.. what were we talking about? Oh, yes! The main feature! Well, that's about it for this feature.</p>
+                    </div>
+                </div>
             </div>
+            </transition>
 
         </section>
 
         <section class="feature2">
+            <div class="content pad-vert-medium">
+                <div class="flex-panel">
+                    <div class="left-panel"></div>
+                    <div class="left-panel align-left">
+                        <h1 class="invisible" v-observe-visibility="fadeUp">Another Super Nice Feature</h1>
+                        <p class="invisible" v-observe-visibility="fadeUp">Nobody can deny that this, too, is a great feature. A feature that would leave many speechless—that's a fact!<b>*</b></p>
+                        <p class="invisible" v-observe-visibility="fadeUp">Accepting credit, debit, bitcoin and paypal, hell, I'll even take mailed-in cheques.</p>
+                        <h3 class="invisible" v-observe-visibility="fadeUp">lorem ipsum?</h3>
+                        <p class="invisible" v-observe-visibility="fadeUp">I could use lorem ipsum, but where's the fun in that?</p>
+                        <h3 class="invisible" v-observe-visibility="fadeUp"></h3>
+
+                        <br>
+                        <p class="invisible" v-observe-visibility="fadeUp"><b>*</b><span class="fine-print">My friends were pretty speechless.</span></p>
+                    </div>
+                </div>
+            </div>
 
         </section>
 
         <section class="feature3">
-
+            <div class="content pad-vert-medium ">
+                <div class="flex-panel reverse-flex">
+                    <!-- <div class="left-panel"></div> -->
+                    <div class="right-panel align-right">
+                        <h1 class="invisible" v-observe-visibility="fadeUp">The Last Feature</h1>
+                        <p class="invisible" v-observe-visibility="fadeUp">This feature is slightly less relevant to your needs but we say that it proves were innovators and that we are the de-facto leaders in our field (we are).</p>
+                        <h2 class="invisible" v-observe-visibility="fadeUp">what else is there to say?</h2>
+                        <p class="invisible" v-observe-visibility="fadeUp">Not much.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <section class="specifications">
+            <div class="content pad-vert-medium ">
+                <div class="flex-panel">
+                    <div class="left-panel"></div>
+                    <div class="left-panel align-left">
+                        <h1 class="invisible" v-observe-visibility="fadeUp">Specifications</h1>
+                        <p class="invisible" v-observe-visibility="fadeUp">Incase you've made it this far without buying the product, let's break it down for you.</p>
+                        
+                        <ul>
+                            <li class="invisible" v-observe-visibility="fadeUp">Spec A: fifty-billion</li>
+                            <li class="invisible" v-observe-visibility="fadeUp">Spec B: one-gazillion</li>
+                            <li class="invisible" v-observe-visibility="fadeUp">Spec C: infinity itself</li>
+                            <li class="invisible" v-observe-visibility="fadeUp">The exact dimensions you need it to be, it is intangible</li>
+                            <li class="invisible" v-observe-visibility="fadeUp">Will make pigs fly</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     
         <div class="palette">
@@ -117,7 +181,131 @@
 
 
 <script>
-export default {};
+import AniBackground from "./AniBackground.vue";
+
+export default {
+    components: {
+        VueAniBackground: AniBackground,
+    },
+    data() {
+        return {
+            // a dictionary that stores booleans of which elements that have been revealed.
+            revealed: {},
+            date: "11:34",
+        };
+    },
+    computed: {
+        timeLeft() {
+            var endDate = new Date(2018, 1, 1, 10, 0, 0, 0);
+            return this.millisToMinutesAndSeconds(this.date - endDate);
+        },
+    },
+    methods: {
+        millisToMinutesAndSeconds(millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return (seconds == 60 ? (minutes+1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+        },
+        isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            var html = document.documentElement;
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || html.clientHeight) &&
+                rect.right <= (window.innerWidth || html.clientWidth)
+            );
+        },
+        fadeUp(isVisible, entry, delay = 250) {
+            var revealed = !entry.target.classList.contains("invisible");
+
+            if (isVisible && !revealed) {
+                $(entry.target).velocity(
+                    {
+                        opacity: [1, 0.0],
+                        translateY: [0, "30px"],
+                    },
+                    {
+                        duration: 500,
+                        delay: delay,
+                        easing: "easeOutQuart",
+                        complete: function() {
+                            entry.target.classList.remove("invisible");
+                        },
+                    }
+                );
+            }
+        },
+        fadeInRight(isVisible, entry, delay = 250) {
+            var revealed = !entry.target.classList.contains("invisible");
+
+            if (isVisible && !revealed) {
+                $(entry.target).velocity(
+                    {
+                        opacity: [1, 0.0],
+                        translateX: [0, "-40px"],
+                        // translateY: [0, "50px"],
+                    },
+                    {
+                        duration: 500,
+                        delay: delay,
+                        easing: "easeOutExpo",
+                        //remove 'invisible' class once completed.
+                        complete: function() {
+                            entry.target.classList.remove("invisible");
+                        },
+                    }
+                );
+            }
+        },
+        fadeInLeft(isVisible, entry, delay = 250) {
+            var revealed = !entry.target.classList.contains("invisible");
+
+            if (isVisible && !revealed) {
+                $(entry.target).velocity(
+                    {
+                        opacity: [1, 0.0],
+                        translateX: [0, "100px"],
+                        // translateY: [0, "50px"],
+                    },
+                    {
+                        duration: 500,
+                        delay: delay,
+                        easing: "easeOutExpo",
+                        //remove 'invisible' class once completed.
+                        complete: function() {
+                            entry.target.classList.remove("invisible");
+                        },
+                    }
+                );
+            }
+        },
+        visibilityChanged(isVisible, entry) {
+            console.log(entry);
+        },
+    },
+    created() {
+        console.log("created:");
+    },
+    mounted() {
+        console.log("mounted: ");
+        // var elements = $("*");
+        // console.log(elements);
+
+        //populated the 'revealed' object, this object keeps track of which elements have been revealed.
+        // for (var i = 0; i < elements.length; i++) {
+        //     if (elements[i].dataset.revealkey) {
+        //         this.revealed[elements[i].dataset.revealkey] = false;
+        //         // console.log(elements[i].dataset.revealkey);
+        //     }
+        // }
+        this.date = new Date(2018, 1, 1, 10, 13, 0, 0);
+        const vm = this;
+        setInterval(function() {
+            vm.date = new Date(vm.date.getTime() - 1000);
+        }, 1000);
+    },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -172,7 +360,7 @@ $break-large: 1300px;
 section:nth-child(4n-1) {
     background-color: $secondary;
 }
-section:nth-child(4n+1) {
+section:nth-child(4n + 1) {
     background-color: $primary;
 }
 
@@ -369,11 +557,12 @@ section:nth-child(4n+1) {
             width: 100%;
             z-index: 99;
 
+            background-image: url("../assets/featurethumb.png");
             background-repeat: no-repeat;
             background-position: center;
             background-size: auto 100%;
 
-            background-image: url("../assets/featurethumb.png");
+            transform-origin: top right;
         }
     }
 }
@@ -391,23 +580,22 @@ section:nth-child(4n+1) {
         margin: auto;
     }
     width: 50%;
-    text-align: left;
     padding: 0px 50px 0 15px;
 }
 
 .feature1 {
     width: 100%;
-    height: 300px;
+    height: auto;
 }
 
 .feature2 {
     width: 100%;
-    height: 300px;
+    height: auto;
 }
 
 .feature3 {
     width: 100%;
-    height: 300px;
+    height: auto;
 }
 
 $fullPalette: $neutral, $neutralDark, $highlight, $primary, $secondary;
@@ -431,8 +619,78 @@ $fullPalette: $neutral, $neutralDark, $highlight, $primary, $secondary;
     }
 }
 
+.flex-panel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.left-panel {
+    @include respond-to(xsmall-screens) {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        margin: auto;
+    }
+    @include respond-to(small-screens) {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        margin: auto;
+    }
+    width: 50%;
+    height: 100%;
+    // height: 500px;
+    padding: 0px 50px 0 15px;
+    text-align: left;
+    // flex: 1 0 auto;
+}
+.right-panel {
+    @include respond-to(xsmall-screens) {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        margin: auto;
+    }
+    @include respond-to(small-screens) {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        margin: auto;
+    }
+    width: 50%;
+    height: 100%;
+    padding: 0px 15px 0 50px;
+    text-align: right;
+    // flex: 0 1 auto;
+}
+.reverse-flex {
+    flex-direction: row-reverse;
+}
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}
+.invisible {
+    opacity: 0;
+}
 .title {
     margin: 0 0 50px 0;
+}
+
+.fine-print {
+    font-size: 0.5rem;
+}
+.alert-text {
+    color: rgb(221, 0, 0);
+    text-shadow: 1px 1px 5px black;
+}
+.pad-vert-medium {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
 }
 .content {
     @include respond-to(xsmall-screens) {
@@ -453,10 +711,7 @@ $fullPalette: $neutral, $neutralDark, $highlight, $primary, $secondary;
     }
     // background-color: #ddd;
     margin: 0 auto;
-}
-.pad-vert-medium {
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
+    // display: inline;
 }
 .grid-wrap-4 {
     @include respond-to(xsmall-screens) {
