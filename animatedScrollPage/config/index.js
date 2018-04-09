@@ -40,8 +40,8 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, "../dist"),
-    assetsSubDirectory: "ScrollAnimatedProductPage", // <-- Custom asset url path for gh-pages
-    assetsPublicPath: "/",
+    assetsSubDirectory: "static",
+    assetsPublicPath: "/ScrollAnimatedProductPage/", // <-- Custom asset url path for gh-pages
 
     /**
      * Source Maps
