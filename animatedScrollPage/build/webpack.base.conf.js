@@ -51,7 +51,7 @@ module.exports = {
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("img/[name].[hash:7].[ext]"), //<--Custom asset url path for gh-pages
+          name: utils.assetsPath("ScrollAnimatedProductPage/img/[name].[hash:7].[ext]"), //<--Custom asset url path for gh-pages
         },
       },
       {
