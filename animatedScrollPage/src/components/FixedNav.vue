@@ -14,11 +14,11 @@
                 <div class="navbar content">
 
                     <div class="nav-left">
-                        <a class="navbtn" href="">Home</a>
-                        <a class="navbtn" href="">Overview</a>
-                        <a class="navbtn" href="">Features</a>
-                        <a class="navbtn" href="">Buy</a>
-                        <a class="navbtn" href="">About</a>
+                        <a class="navbtn"  @click="scrollTo('.navbar')">Home</a>
+                        <a class="navbtn"  @click="scrollTo('.overview')">Overview</a>
+                        <a class="navbtn"  @click="scrollTo('.features')">Features</a>
+                        <a class="navbtn"  @click="scrollTo('.specifications')">Buy</a>
+                        <a class="navbtn"  @click="scrollTo('.footer')">About</a>
                     </div>
 
                     <div class="nav-right">
@@ -42,6 +42,9 @@ export default {
         };
     },
     methods: {
+        scrollTo(elName) {
+             $(elName).scrollView();
+        },
         beforeEnter: function(el) {
             el.style.opacity = 0;
         },
@@ -200,6 +203,7 @@ $break-large: 1300px;
     }
     &:hover {
         background-color: $btnHoverLighten;
+        cursor: pointer;
     }
 }
 

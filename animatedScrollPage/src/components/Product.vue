@@ -1,6 +1,14 @@
 <template>
   <div class="wrapper">
         
+        <!-- 
+            If this were more serious, I'd refactor it so that there wouldn't be any repeated code,
+            I'd put all the navigation in one component rather than split it up as I did. This was just 
+            made to quickly test out and showcase various animations in both jQuery and Vue.js. Really,
+            you would likely only need to choose one or the other to avoid bloat, this is just me
+            having fun and showing different ways of accomplishing the same thing.
+        -->
+
         <!-- for vue transition animated navbar -->
         <!-- <vue-fixed-nav 
             :showfixednav="{showNav}"
@@ -12,11 +20,11 @@
                 <div class="banner">
                     <div class="navbar content" > 
                         <div class="nav-left">
-                            <a class="navbtn" href="">Home</a>
-                            <a class="navbtn" href="">Overview</a>
-                            <a class="navbtn" href="">Features</a>
-                            <a class="navbtn" href="">Buy</a>
-                            <a class="navbtn" href="">About</a>
+                            <a class="navbtn"  @click="scrollTo('.navbar')">Home</a>
+                            <a class="navbtn"  @click="scrollTo('.overview')">Overview</a>
+                            <a class="navbtn"  @click="scrollTo('.features')">Features</a>
+                            <a class="navbtn"  @click="scrollTo('.specifications')">Buy</a>
+                            <a class="navbtn"  @click="scrollTo('.footer')">About</a>
                         </div>
                         <div class="nav-right">
                             <a class="navbtn" href="">Sign In</a>
@@ -45,7 +53,7 @@
                         <span>c</span>
                         <span>t</span>
                     </h1>
-                    <p>The best product you've ever seen.</p>
+                    <p>The best product in the world!</p>
                 </div>
             </div>
 
@@ -103,6 +111,7 @@
                     <div class="feature-list align-left">
                         <h4 class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 100)">Best thing Ever</h4>
                         <p class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 300)">There's a whole lotta stuff to be had here, no product is quite like this one, you won't believe your eyes—and no, it is not a scam! </p>
+                        <p class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 300)">(By the way, try clicking those nav buttons, I animated those, too.)</p>
                         <h5 class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 100)">Free yourself</h5>
                         <p class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 300)">Free yourself from the chains of material bondage, give us your money, become enlightened!</p>
                         <h5 class="invisible" v-observe-visibility="(isVisible, entry) => fadeInRight(isVisible, entry, 100)">Get 'em while they're hot!</h5>
@@ -120,7 +129,6 @@
             <transition @enter="fadeInRight">
             <div class="content pad-vert-medium ">
                 <div class="flex-panel reverse-flex">
-                    <div class="left-panel"></div>
                     <div class="right-panel align-right">
                         <h1 class="invisible" v-observe-visibility="fadeUp">This Product's Primary Feature</h1>
                         <p class="invisible" v-observe-visibility="fadeUp">There is so much to say about this product, but I'm not sure what to say about it. So, I will avoid using contractions and favor larger word choices in an effort to take up more space with a long-winded, circumlocutory, run-on sentence—because I want it to take up more room than what I'm able to come up with at the moment.</p>
@@ -129,6 +137,7 @@
                         <h3 class="invisible" v-observe-visibility="fadeUp">hmmmmmmm</h3>
                         <p class="invisible" v-observe-visibility="fadeUp">What were we talking about? Oh, yeah! The main feature! Well, that's about it for this feature.</p>
                     </div>
+                    <div class="left-panel feature1-pic"></div>
                 </div>
             </div>
             </transition>
@@ -138,7 +147,6 @@
         <section class="feature2">
             <div class="content pad-vert-medium">
                 <div class="flex-panel">
-                    <div class="left-panel"></div>
                     <div class="left-panel align-left">
                         <h1 class="invisible" v-observe-visibility="fadeUp">Another Super Nice Feature</h1>
                         <p class="invisible" v-observe-visibility="fadeUp">Nobody can deny that this, too, is a great feature. A feature that would leave many speechless—that's a fact!<b>*</b></p>
@@ -150,6 +158,7 @@
                         <br>
                         <p class="invisible" v-observe-visibility="fadeUp"><b>*</b><span class="fine-print">My friends were pretty speechless.</span></p>
                     </div>
+                    <div class="left-panel feature2-pic"></div>
                 </div>
             </div>
 
@@ -158,13 +167,14 @@
         <section class="feature3">
             <div class="content pad-vert-medium ">
                 <div class="flex-panel reverse-flex">
-                    <!-- <div class="left-panel"></div> -->
                     <div class="right-panel align-right">
                         <h1 class="invisible" v-observe-visibility="fadeUp">The Last Feature</h1>
-                        <p class="invisible" v-observe-visibility="fadeUp">This feature is slightly less relevant to your needs but we say that it proves we're innovators and that we are the de-facto leaders in our field (we are).</p>
+                        <p class="invisible" v-observe-visibility="fadeUp">Last feature to round this product's description off nicely. This product really has it all, folks. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae expedita assumenda natus dolore aliquam, iste nulla quas quidem, dolor, voluptatum ipsa culpa iure. Delectus ducimus repudiandae praesentium, nemo modi dolor.</p>
                         <h2 class="invisible" v-observe-visibility="fadeUp">what else is there to say?</h2>
-                        <p class="invisible" v-observe-visibility="fadeUp">Not much. Just buy it already!</p>
+                        <p class="invisible" v-observe-visibility="fadeUp">Not much. Just buy it already! (I got lazy thinking up stuff and used lorem ipsum)</p>
+                        <p class="invisible" v-observe-visibility="fadeUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore omnis quas labore dolorem, accusamus libero facere reprehenderit ullam vitae obcaecati deleniti, possimus, quibusdam commodi culpa qui est quo alias voluptatem.</p>
                     </div>
+                    <div class="left-panel feature1-pic"></div>
                 </div>
             </div>
         </section>
@@ -182,8 +192,35 @@
                             <li class="invisible" v-observe-visibility="fadeUp">Spec B: hmm</li>
                             <li class="invisible" v-observe-visibility="fadeUp">Spec C: contains infinity itself?</li>
                             <li class="invisible" v-observe-visibility="fadeUp">The exact dimensions you need it to be, it is intangible</li>
-                            <li class="invisible" v-observe-visibility="fadeUp">Will make pigs fly</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="buy">
+            <div class="content pad-vert-medium ">
+                <div class="flex-panel">
+                    <div class="left-panel"></div>
+                    <div class="left-panel align-left">
+                        <h1 class="invisible" v-observe-visibility="fadeUp">Order now</h1>
+
+                        <div v-if="!showComplete" class="orderform">
+                            <div>
+                                <label>Order</label>
+                            </div>
+                                <!-- <label>Order</label> -->
+                            <input type="number" placeholder="Quantity">
+                            <button @click="purchaseAnimation" class="btn">Purchase</button>
+                        </div>
+
+                        <transition 
+                            mode="out-in"
+                            name="fade">
+                            <div v-if="showComplete" class="complete">
+                                <h4>Purchase Complete!</h4>
+                            </div>
+                        </transition>
                     </div>
                 </div>
             </div>
@@ -224,6 +261,7 @@ export default {
             revealed: {},
             date: "11:34",
             showNav: false,
+            showComplete: false,
         };
     },
     computed: {
@@ -234,18 +272,70 @@ export default {
         },
     },
     methods: {
+        purchaseAnimation() {
+            //example of animations with jquery/velocity instead of vueJS transitions.
+            console.log($(".orderform").children());
+            const vm = this;
+            var elementList = $(".orderform")
+                .children()
+                .toArray()
+                .reverse();
+
+            var skewF = function(elements, percentComplete, timeRemaining, timeStart, tween) {
+                // Also demonstrating multiple ways of animating via vue JS
+                // This shows how to animate with a custom progress function that called via Velocity.
+                var degrees = 55 * percentComplete;
+                var distance = 500 * percentComplete;
+                var scaleX = 1.2 * percentComplete + 1;
+                var scaleY = 1 - (percentComplete/2)
+                var translateX = -200 * (percentComplete/2);
+                elements[0].style.transform =   "scale(" + scaleY + ", " + scaleX + ")" + 
+                                                " skew(" + degrees + "deg," + 0 + "deg)" +
+                                                " translateX(" + translateX + "px)";
+            };
+
+            $(elementList).each(function(index, el) {
+                var delay = index * 200
+                $(el)
+                    .velocity({
+                        color: "black",
+                    }, {duration: 200, delay: delay, easing: "easeOutQuart", progress: skewF})
+                    .velocity({
+                        scaleX: [2, 0.5],
+                        scaleY: [ .5, 2],
+                        translateX: [0, -80],
+                        skewX: [30,50],
+                    }, {duration: 100, easing: "easeInQuart"})
+                    .velocity(
+                        {
+                            opacity: [-0.5, 1],
+                            scaleY: [0, .7],
+                            scaleX: [10, 1],
+                            translateX: 3000,
+                        },
+                        { duration: 500, complete: function() {
+                            setTimeout(function(){
+                                vm.showComplete = true 
+                            }, 500) 
+                        } }
+                    )
+            });
+
+
+        },
+        scrollTo(elName) {
+            $(elName).scrollView();
+        },
         revealFixedNav(isVisible, entry) {
             //this is for passing state to vue transition animated navbar, jquery animated will be located in the app component.
             console.log(isVisible);
-            
+
             if (!isVisible) {
                 this.showNav = true;
                 console.log("showing Fixed Nav");
-                
             } else {
                 // this.showNav = false;
                 console.log("hiding fixed nav");
-                
             }
         },
         millisToMinutesAndSeconds(millis) {
@@ -351,6 +441,18 @@ export default {
         setInterval(function() {
             vm.date = new Date(vm.date.getTime() - 1000);
         }, 1000);
+
+        // jquery scroll-to-element function
+        $.fn.scrollView = function() {
+            return this.each(function() {
+                $("html, body").animate(
+                    {
+                        scrollTop: $(this).offset().top,
+                    },
+                    1000
+                );
+            });
+        };
     },
 };
 </script>
@@ -437,33 +539,18 @@ button {
     width: 100%;
     height: 100%;
     margin: auto;
+    padding: 0;
 }
 .header {
     width: 100%;
 }
 .banner {
-    // background-color: $primary;
     width: 100%;
 }
 .navbar {
-    // background-color: lighten($primary, 3); //remove lighten
-    // max-width: $contentWidthMed;
     @include respond-to(xsmall) {
-        //collapse nav buttons at xsmall size
+        //TODO: collapse nav buttons at xsmall size
     }
-    // @include respond-to(small) {
-    //     max-width: $contentWidthSmall;
-    // }
-    // @include respond-to(medium-screens) {
-    //     max-width: $contentWidthMed;
-    // }
-    // @include respond-to(large-screens) {
-    //     max-width: $contentWidthLarge;
-    // }
-    // @include respond-to(wide-screens) {
-    //     float: none;
-    //     max-width: $contentWidthWide;
-    // }
 
     height: 60px;
     margin: auto;
@@ -504,6 +591,19 @@ button {
     }
     &:hover {
         background-color: $btnHoverLighten;
+        cursor: pointer;
+    }
+}
+.btn {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    background-color: #cc2929;
+    &:hover {
+        background-color: lighten(#cc2929, 10);
+    }
+    &:active {
+        background-color: darken(#cc2929, 10);
     }
 }
 
@@ -538,9 +638,33 @@ button {
 
     & div {
         margin: auto;
-        width: 100%;
+        width: 600px;
         grid-area: c;
-
+        @include respond-to(xsmall-screens) {
+            width: 100%;
+            & h1 {
+                font-size: 1.3rem !important;
+            }
+            & p {
+                font-size: 0.8rem;
+            }
+        }
+        @include respond-to(small-screens) {
+            width: 100%;
+            & h1 {
+                font-size: 1.6rem !important;
+            }
+            & p {
+                font-size: 0.9rem;
+            }
+        }
+        @include respond-to(medium-screens) {
+            // font-size: 3rem;
+            width: 100%;
+            & h1 {
+                font-size: 2.6rem !important;
+            }
+        }
         & h1 {
             color: $neutral;
             font-size: 60px;
@@ -606,6 +730,7 @@ button {
     width: 100%;
     height: auto;
     display: inline-block;
+    overflow: hidden;
 
     & .content {
         @include respond-to(xsmall-screens) {
@@ -701,10 +826,63 @@ button {
     width: 100%;
     height: auto;
 }
+.feature1-pic {
+    // position: absolute;
+    top: 50;
+    left: 10%;
+    margin: auto;
+    height: 400px !important;
+    width: 300px !important;
+    background-image: url("../assets/mysterybox.png");
+    background-size: cover;
+    background-position: center;
+
+    @include respond-to(xsmall-screens) {
+        display: none;
+    }
+    @include respond-to(small-screens) {
+        display: none;
+    }
+    @include respond-to(medium-screens) {
+        // top: 50px;
+        // left: 60px;
+        height: 200px !important;
+        width: 200px !important;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
 
 .feature2 {
     width: 100%;
     height: auto;
+}
+.feature2-pic {
+    // position: absolute;
+    top: 50;
+    left: 10%;
+    margin: auto;
+    height: 300px !important;
+    width: 300px !important;
+    background-image: url("../assets/loremIpsum.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include respond-to(xsmall-screens) {
+        display: none;
+    }
+    @include respond-to(small-screens) {
+        display: none;
+    }
+    @include respond-to(medium-screens) {
+        // top: 50px;
+        // left: 60px;
+        height: 200px !important;
+        width: 200px !important;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 }
 
 .feature3 {
@@ -731,6 +909,15 @@ $fullPalette: $neutral, $neutralDark, $highlight, $primary, $secondary;
             width: 100%;
         }
     }
+}
+.orderform {
+
+    & div {
+        display: inline-block;
+    }
+}
+.buy {
+    height: 250px;
 }
 
 .flex-panel {
@@ -787,6 +974,9 @@ $fullPalette: $neutral, $neutralDark, $highlight, $primary, $secondary;
 }
 .align-right {
     text-align: right;
+    @include respond-to(xsmall-screens) {
+        text-align: left !important;
+    }
 }
 .invisible {
     opacity: 0;
@@ -844,5 +1034,12 @@ $fullPalette: $neutral, $neutralDark, $highlight, $primary, $secondary;
         height: 420px;
     }
     display: flex;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
